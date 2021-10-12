@@ -1,0 +1,122 @@
+@import "../../SCSS/colors";
+
+.cart {
+  width: 75%;
+  margin: 50px auto;
+
+  &__info {
+    box-shadow: 2px 2px 18px #8888;
+    padding: 20px 40px;
+  }
+
+  &__heading {
+    display: flex;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    color: #6c6c6c;
+
+    padding: 0 20px 20px 20px;
+
+    li:first-child {
+      width: 30%;
+    }
+    li:not(:first-child) {
+      margin-left: auto;
+    }
+  }
+
+  &__product {
+    padding: 0 20px;
+
+    &-list {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+
+      img {
+        width: 10%;
+      }
+
+      
+    }
+    &-price{
+        margin-left: 15px;
+        color: black;
+        font-weight: 500;
+    }
+    &-name {
+      width: 35%;
+      padding-left: 20px;
+
+    }
+    &-total{
+      color: $main-color;
+      font-weight: bold;
+
+      i{
+        color: black;
+        margin-left: 15px;
+        cursor: pointer;
+      }
+    }
+    &-mount{
+      display: flex;
+      align-items: center;
+
+      &-btn{
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        padding: 10px 15px;
+      }
+      &-number{
+        border: 1px solid #ccc;
+        padding: 10px 15px;
+      }
+    }
+
+    &-mount,&-total{
+        margin-left: auto;
+    }
+  }
+  &__totalList{
+    text-align: right;
+    padding: 0 30px 30px;
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+
+    span{
+      color: $main-color;
+    }
+  }
+  &__checkout{
+    text-align: center;
+    margin-top: 20px;
+
+    button{
+      padding: 10px;
+      background-color: $main-color;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+
+  @media screen and (max-width:1199px) {
+    width: 90%;
+  }
+  @media screen and (max-width:767px) {
+    width: 100%;
+    margin: 0;
+
+    &__info{
+      padding: 10px 0;
+    }
+  }
+}

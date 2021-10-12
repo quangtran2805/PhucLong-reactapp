@@ -1,0 +1,88 @@
+@import "../../SCSS/reset";
+@import "../../SCSS/colors";
+
+.login {
+  background-color: #efefef;
+  padding: 10px 0 50px;
+
+  &__container {
+    max-width: 75%;
+    margin: 0 auto;
+    background-color: white;
+    text-align: center;
+  }
+
+  &__title {
+    padding: 70px;
+    font-size: 24px;
+    color: $main-color;
+  }
+  &__form {
+    width: 35%;
+    margin: 0 auto;
+  }
+  &__label {
+    display: block;
+    margin: 20px 0;
+    font-weight: 700;
+    color: #666666;
+    text-align: left;
+    span {
+      color: red;
+    }
+  }
+  &__input {
+    padding: 15px 10px;
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgb(207, 207, 207);
+    outline: none;
+
+    &:focus {
+      border: 1px solid rgb(100, 100, 252);
+    }
+  }
+  ::placeholder {
+    color: black;
+  }
+  &__forget {
+    margin: 20px 0;
+    color: #474747;
+    font-size: 16px;
+
+    a {
+      font-style: italic;
+      color: $main-color;
+      font-weight: bold;
+    }
+  }
+  &__btn {
+    padding: 15px 20px;
+    margin: 30px 0 45px;
+    background-color: $main-color;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 1023px) {
+    &__container {
+      max-width: 100%;
+    }
+    &__form {
+      width: 50%;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    &__title {
+      padding: 10px;
+      line-height: 1.4;
+    }
+    &__form{
+      width: 75%;
+    }
+  }
+}

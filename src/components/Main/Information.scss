@@ -1,0 +1,120 @@
+@import "../../SCSS/reset";
+@import "../../SCSS/colors";
+
+.information {
+  background-image: url(../../img/coffeecopy.png);
+  background-position: right bottom;
+  background-repeat: no-repeat;
+
+  &__intro {
+    display: flex;
+    align-items: center;
+    width: 75%;
+    margin: 100px auto 50px;
+  }
+
+  &__title {
+    margin-bottom: 50px;
+    color: $main-color;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+  &__desc {
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .btn {
+    padding: 7px 12px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid $main-color;
+    color: $main-color;
+    transition: 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+      background-color: $main-color;
+    }
+  }
+
+  &__intro-top {
+    margin-bottom: 100px;
+
+    .information__image {
+      width: 60%;
+
+      &-banner {
+        max-width: 530px;
+        border: 5px solid white;
+      }
+    }
+    .information__item {
+      width: 40%;
+    }
+  }
+  .information__intro-bottom {
+    flex-direction: row-reverse;
+
+    .information__image {
+      width: 50%;
+
+      &-tuyendung {
+        max-width: 320px;
+        border: 5px solid white;
+      }
+    }
+    .information__item {
+      width: 50%;
+      padding-right: 100px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1199px) {
+    &__intro {
+      width: 90%;
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    &__intro {
+      flex-direction: column;
+      width: 90%;
+    }
+
+    &__intro-top {
+      .information__image {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      .information__item {
+        width: 100%;
+      }
+    }
+  }
+  @media screen and (max-width: 767px) {
+    &__intro {
+      margin-top: 50px;
+      display: block;
+      margin-bottom: 20px;
+    }
+    &__intro-top {
+      .information__image-banner {
+        max-width: 100%;
+      }
+    }
+    .information {
+      &__intro-bottom {
+        flex-direction: row-reverse;
+
+        .information__image {
+          width: 100%;
+        }
+        .information__item {
+          width: 100%;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
