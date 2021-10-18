@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.scss";
 
+import queryString from "query-string";
 import { useEffect, useState } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -8,10 +9,9 @@ import Product from "./components/Main/Product";
 import HomePage from "./components/Main/HomePage";
 import Login from "./components/Login/Login";
 import Cart from "./components/Main/Cart";
-import { DEFAULT_PRODUCT } from "./contants/contant";
 
 function App() {
-  const [productList] = useState(DEFAULT_PRODUCT);
+  const [productList, setProductList] = useState([]);
   const [listCart, setListCart] = useState(
     JSON.parse(localStorage.getItem("listCart")) || []
   );
@@ -43,6 +43,30 @@ function App() {
         "Phúc Long Trần Phú Nha Trang - 78-80 Trần Phú, phường Lộc Thọ, thành phố Nha Trang, Khánh Hòa",
     },
   ]);
+  const [filter, setFilter] = useState({
+    _page : 1,
+    _limit : 8
+  })
+
+  useEffect(() => {
+    async function getJsonAPI() {
+      const param = queryString.stringify(filter);
+      const getAPI =
+        `https://js-api-phuclong.herokuapp.com/product?${param}`;
+      const response = await fetch(getAPI);
+      const product = await response.json();
+      setProductList(product);
+    }
+    getJsonAPI();
+  }, [filter]);
+
+  const HandleNewPage = (newPage) => {
+    console.log(newPage)
+    setFilter({
+      ...filter,
+      _page : newPage
+    })
+  }
 
   const HandleChangeName = (e) => {
     setQuery({
@@ -184,7 +208,7 @@ function App() {
     });
     setListCart(newList);
   };
-  
+
   const handleChangeQuantityDe = (id) => {
     let newList = listCart.map((item) => {
       if (item.id === id && item.quantity > 1) {
@@ -240,6 +264,8 @@ function App() {
               clickProduct={clickProduct}
               totalQuantity={totalQuantity}
               getTotalListCart={getTotalListCart}
+              filter={filter}
+              onPageChange={HandleNewPage}
             />
           </Route>
           <Route path="/cart">
@@ -255,7 +281,7 @@ function App() {
         <Footer />
         {scroll && (
           <div className="scrollTop" onClick={clickToTop}>
-            <i class="fas fa-arrow-up"></i>
+            <i className="fas fa-arrow-up"></i>
           </div>
         )}
       </div>

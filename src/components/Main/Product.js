@@ -1,21 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Product.scss";
 
 function Product(props) {
-  const [isValue, setIsValue] = useState(false);
-
   const onSubmit = (e) => {
     e.preventDefault();
   };
-
+  const {_page} = props.filter
+  
+  const handlePageChange = (newPage) => {
+    props.onPageChange(newPage)
+  }
   // const HandlerChangeName = (value) => {
   //   return props.onChangeName(value)
   // }
-
-  const handleMoreProduct = () => {
-    setIsValue(!isValue);
-  };
 
   return (
     <>
@@ -49,7 +47,7 @@ function Product(props) {
         </form>
         <div className="main__product">
           <ul className="main__product-list">
-            {props.productList.slice(0, 8).map((item) => (
+            {props.productList.map((item) => (
               <li className="main__product-item" key={item.id}>
                 <img className="main__product-img" src={item.imgUrl} alt="" />
                 <h3 className="main__product-title">{item.name}</h3>
@@ -63,33 +61,20 @@ function Product(props) {
                 </button>
               </li>
             ))}
-            {isValue &&
-              props.productList.slice(8).map((item) => (
-                <li className="main__product-item" key={item.id}>
-                  <img className="main__product-img" src={item.imgUrl} alt="" />
-                  <h3 className="main__product-title">{item.name}</h3>
-                  <p className="main__product-desc">{item.desc}</p>
-                  <p className="main__product-price">{item.price} đ</p>
-                  <button
-                    className="main__product-btn"
-                    onClick={() => props.clickProduct(item.id)}
-                  >
-                    {item.btn}
-                  </button>
-                </li>
-              ))}
           </ul>
-          <div
-            className={isValue ? "" : "main__product-btnMore"}
-            onClick={handleMoreProduct}
-          >
-            {isValue ? "" : "XEM TẤT CẢ"}
+          <div className="main__product-prevnext">
+            <button disabled={_page <= 1} onClick={() => handlePageChange(_page - 1)}>
+              prev
+            </button>
+            <button disabled={_page >= 2}  onClick={() => handlePageChange(_page + 1)}>
+              next
+            </button>
           </div>
         </div>
       </div>
       <div className="main__cart">
         <div className="main__cart-icon">
-          <i class="fal fa-shopping-cart"></i>
+          <i className="fal fa-shopping-cart"></i>
           <span className="main__cart-zero">{props.totalQuantity()}</span>
         </div>
         <h5 className="main__cart-title">

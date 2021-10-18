@@ -49,7 +49,7 @@ function Header(props) {
           </div>
           <div className="btn" onClick={handlePopup}>
             <a href="/">Giỏ hàng</a>
-            <i class="fal fa-shopping-cart header__cart-icon"></i>
+            <i className="fal fa-shopping-cart header__cart-icon"></i>
             <span className="header__cart-zero">{props.totalQuantity()}</span>
           </div>
           {popup && (
@@ -137,7 +137,7 @@ function Header(props) {
             </Link>
           </li>
           <li className="header__menu-item">
-            <Link to="/product"Link to="/product" className="header__menu-link">
+            <Link to="/product" className="header__menu-link">
               KHUYẾN MÃI
             </Link>
           </li>
@@ -153,7 +153,7 @@ function Header(props) {
           </li>
           <li className="header__menu-item">
             <Link to="/product" className="header__menu-link">
-              <i class="fal fa-search"></i>
+              <i className="fal fa-search"></i>
             </Link>
           </li>
         </ul>

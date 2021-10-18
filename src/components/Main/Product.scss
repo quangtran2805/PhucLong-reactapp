@@ -140,6 +140,22 @@
         transition: 0.5s;
       }
     }
+    &-prevnext{
+      margin-top: 20px;
+
+      button{
+        padding: 5px 10px;
+        background-color: transparent;
+        // border: 1px solid $main-color;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        // color: $main-color;
+      }
+      button:first-child{
+        margin-right: 10px;
+      }
+    }
   }
   &__cart {
     display: none;
