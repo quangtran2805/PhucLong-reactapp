@@ -10,6 +10,9 @@ import HomePage from "./components/Main/HomePage";
 import Login from "./components/Login/Login";
 import Cart from "./components/Main/Cart";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function App() {
   const [productList, setProductList] = useState([]);
   const [listCart, setListCart] = useState(
@@ -44,15 +47,15 @@ function App() {
     },
   ]);
   const [filter, setFilter] = useState({
-    _page : 1,
-    _limit : 8
-  })
+    _page: 1,
+    _limit: 8,
+  });
+  const [scroll, setScroll] = useState(false);
 
   useEffect(() => {
     async function getJsonAPI() {
       const param = queryString.stringify(filter);
-      const getAPI =
-        `https://js-api-phuclong.herokuapp.com/product?${param}`;
+      const getAPI = `https://js-api-phuclong.herokuapp.com/product?${param}`;
       const response = await fetch(getAPI);
       const product = await response.json();
       setProductList(product);
@@ -61,12 +64,12 @@ function App() {
   }, [filter]);
 
   const HandleNewPage = (newPage) => {
-    console.log(newPage)
+    console.log(newPage);
     setFilter({
       ...filter,
-      _page : newPage
-    })
-  }
+      _page: newPage,
+    });
+  };
 
   const HandleChangeName = (e) => {
     setQuery({
@@ -176,10 +179,6 @@ function App() {
     setListCart(removeItem);
   };
 
-  useEffect(() => {
-    localStorage.setItem("listCart", JSON.stringify(listCart));
-  }, [listCart]);
-
   const getTotalListCart = () => {
     let sum = 0;
     for (let i = 0; i < listCart.length; i++) {
@@ -222,18 +221,31 @@ function App() {
     setListCart(newList);
   };
 
-  const [scroll, setScroll] = useState(true);
-  const checkScrollTop = () => {
-    if (!scroll && window.pageYOffset > 50) {
-      setScroll(true);
-    } else if (scroll && window.pageYOffset <= 50) {
-      setScroll(false);
-    }
-  };
+  useEffect(() => {
+    localStorage.setItem("listCart", JSON.stringify(listCart));
+  }, [listCart]);
+
+  useEffect(() => {
+    const ScrollTop = () => {
+      // if (window.pageYOffset > 100) {
+      //   setScroll(true);
+      // } else {
+      //   setScroll(false);
+      // }
+      setScroll(window.pageYOffset > 100)
+    };
+    window.addEventListener("scroll", ScrollTop);
+  }, []);
+
   const clickToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  window.addEventListener("scroll", checkScrollTop);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1500,
+    });
+  }, []);
 
   return (
     <Router>

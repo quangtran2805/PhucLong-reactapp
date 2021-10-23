@@ -8,10 +8,10 @@ function Information(props) {
   return (
     <section className="information">
       <div className="information__intro information__intro-top">
-        <div className="information__image">
+        <div className="information__image" data-aos="zoom-in" data-aos-delay='500'>
           <img src={bannerHome} alt="" className="information__image-banner" />
         </div>
-        <div className="information__item">
+        <div className="information__item" data-aos="fade-up" data-aos-delay='1200'>
           <h1 className="information__title">
             TỪ NHỮNG MẦM TRÀ, CHÚNG TÔI TẠO RA NIỀM ĐAM MÊ
           </h1>
@@ -33,14 +33,14 @@ function Information(props) {
         </div>
       </div>
       <div className="information__intro information__intro-bottom">
-        <div className="information__image">
+        <div className="information__image" data-aos="zoom-in" data-aos-delay='500'>
           <img
             src={tuyenDung}
             alt=""
             className="information__image-tuyendung"
           />
         </div>
-        <div className="information__item">
+        <div className="information__item" data-aos="fade-up" data-aos-delay='1200'>
           <h1 className="information__title">
             ĐỘI NGŨ NHÂN VIÊN TRÀN ĐẦY NHIỆT HUYẾT
           </h1>

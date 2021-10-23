@@ -58,9 +58,9 @@ function Header(props) {
               <div className="header__cart-children">
                 <div className="header__cart-title">
                   <h5>Giỏ hàng của bạn</h5>
-                  <a href="/cart" className="header__cart-title-btn btn">
+                  <Link to="/cart" className="header__cart-title-btn btn">
                     Xem chi tiết
-                  </a>
+                  </Link>
                 </div>
                 <ul className="header__cart-list">
                   {props.listCart.map((item) => (
@@ -81,9 +81,9 @@ function Header(props) {
                 <h2 className="header__cart-total">
                   Tổng tiền: <span>{props.getTotalListCart()} đ</span>
                 </h2>
-                <a href="/cart" className="header__cart-btnTotal">
+                <Link to="/cart" className="header__cart-btnTotal">
                   THANH TOÁN
-                </a>
+                </Link>
               </div>
             </>
           )}

@@ -48,7 +48,7 @@ function Product(props) {
         <div className="main__product">
           <ul className="main__product-list">
             {props.productList.map((item) => (
-              <li className="main__product-item" key={item.id}>
+              <li className="main__product-item" data-aos="zoom-in" key={item.id}>
                 <img className="main__product-img" src={item.imgUrl} alt="" />
                 <h3 className="main__product-title">{item.name}</h3>
                 <p className="main__product-desc">{item.desc}</p>
@@ -66,7 +66,7 @@ function Product(props) {
             <button disabled={_page <= 1} onClick={() => handlePageChange(_page - 1)}>
               prev
             </button>
-            <button disabled={_page >= 2}  onClick={() => handlePageChange(_page + 1)}>
+            <button disabled={_page > 2}  onClick={() => handlePageChange(_page + 1)}>
               next
             </button>
           </div>
