@@ -55,7 +55,7 @@ function App() {
   useEffect(() => {
     async function getJsonAPI() {
       const param = queryString.stringify(filter);
-      const getAPI = `https://js-api-phuclong.herokuapp.com/product?${param}`;
+      const getAPI = `https://json-api-demoapp.herokuapp.com/product?${param}`;
       const response = await fetch(getAPI);
       const product = await response.json();
       setProductList(product);
