@@ -21,6 +21,7 @@ function Header(props) {
 
   return (
     <header className="header">
+      {props.animatePopup && <div className="animatePopup">Bạn đã thêm 1 sản phẩm vào giỏ hàng</div>}
       <div className="header__top">
         <div className="header__delivery">
           <a href="tel:18006779">

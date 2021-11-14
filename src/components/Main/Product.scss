@@ -4,6 +4,7 @@
 .main {
   width: 75%;
   margin: 20px auto;
+  position: relative;
 
   &__filter {
     display: flex;
@@ -57,7 +58,6 @@
       border: 1px solid #ccc;
       outline: none;
       flex-grow: 1;
-      
     }
 
     button {
@@ -140,10 +140,10 @@
         transition: 0.5s;
       }
     }
-    &-prevnext{
+    &-prevnext {
       margin-top: 20px;
 
-      button{
+      button {
         padding: 5px 10px;
         background-color: transparent;
         // border: 1px solid $main-color;
@@ -152,7 +152,7 @@
         font-weight: 600;
         // color: $main-color;
       }
-      button:first-child{
+      button:first-child {
         margin-right: 10px;
       }
     }
@@ -209,7 +209,7 @@
       &-title {
         margin-left: 20px;
 
-        a{
+        a {
           color: white;
         }
       }

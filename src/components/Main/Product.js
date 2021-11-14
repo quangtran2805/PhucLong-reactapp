@@ -6,11 +6,11 @@ function Product(props) {
   const onSubmit = (e) => {
     e.preventDefault();
   };
-  const {_page} = props.filter
-  
+  const { _page } = props.filter;
+
   const handlePageChange = (newPage) => {
-    props.onPageChange(newPage)
-  }
+    props.onPageChange(newPage);
+  };
   // const HandlerChangeName = (value) => {
   //   return props.onChangeName(value)
   // }
@@ -48,7 +48,11 @@ function Product(props) {
         <div className="main__product">
           <ul className="main__product-list">
             {props.productList.map((item) => (
-              <li className="main__product-item" data-aos="zoom-in" key={item.id}>
+              <li
+                className="main__product-item"
+                data-aos="zoom-in"
+                key={item.id}
+              >
                 <img className="main__product-img" src={item.imgUrl} alt="" />
                 <h3 className="main__product-title">{item.name}</h3>
                 <p className="main__product-desc">{item.desc}</p>
@@ -63,10 +67,16 @@ function Product(props) {
             ))}
           </ul>
           <div className="main__product-prevnext">
-            <button disabled={_page <= 1} onClick={() => handlePageChange(_page - 1)}>
+            <button
+              disabled={_page <= 1}
+              onClick={() => handlePageChange(_page - 1)}
+            >
               prev
             </button>
-            <button disabled={_page > 2}  onClick={() => handlePageChange(_page + 1)}>
+            <button
+              disabled={_page > 2}
+              onClick={() => handlePageChange(_page + 1)}
+            >
               next
             </button>
           </div>

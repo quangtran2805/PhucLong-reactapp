@@ -1,17 +1,16 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.scss";
-
-import queryString from "query-string";
 import { useEffect, useState } from "react";
+import queryString from "query-string";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+import "./App.scss";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Product from "./components/Main/Product";
 import HomePage from "./components/Main/HomePage";
 import Login from "./components/Login/Login";
 import Cart from "./components/Main/Cart";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 function App() {
   const [productList, setProductList] = useState([]);
@@ -54,11 +53,15 @@ function App() {
 
   useEffect(() => {
     async function getJsonAPI() {
-      const param = queryString.stringify(filter);
-      const getAPI = `https://json-api-demoapp.herokuapp.com/product?${param}`;
-      const response = await fetch(getAPI);
-      const product = await response.json();
-      setProductList(product);
+      try {
+        const param = queryString.stringify(filter);
+        const getAPI = `https://json-api-demoapp.herokuapp.com/product?${param}`;
+        const response = await fetch(getAPI);
+        const product = await response.json();
+        setProductList(product);
+      } catch (error) {
+        console.log("lỗi get API", error.message)
+      }
     }
     getJsonAPI();
   }, [filter]);
@@ -154,6 +157,8 @@ function App() {
       }
     });
 
+  const [popup, setPopup] = useState(false);
+
   const clickProduct = (id) => {
     const findIDProduct = listCart.find((item) => item.id === id);
     if (findIDProduct) {
@@ -172,6 +177,11 @@ function App() {
       const newCart = [...listCart, addCart];
       setListCart(newCart);
     }
+
+    setPopup(true);
+    setTimeout(() => {
+      setPopup(false);
+    }, 1000);
   };
 
   const clickRemoveProduct = (id) => {
@@ -232,7 +242,7 @@ function App() {
       // } else {
       //   setScroll(false);
       // }
-      setScroll(window.pageYOffset > 100)
+      setScroll(window.pageYOffset > 100);
     };
     window.addEventListener("scroll", ScrollTop);
   }, []);
@@ -255,6 +265,7 @@ function App() {
           getTotalListCart={getTotalListCart}
           clickRemoveProduct={clickRemoveProduct}
           totalQuantity={totalQuantity}
+          animatePopup={popup}
         />
         <Switch>
           <Route exact path="/">

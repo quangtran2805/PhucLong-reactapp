@@ -1,12 +1,34 @@
 @import "../../SCSS/reset";
 @import "../../SCSS/colors";
 
+@keyframes animate {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 .header {
   background-color: white;
   position: sticky;
   width: 100%;
   top: 0;
   z-index: 10;
+
+  .animatePopup {
+    background-color: #0c713d;
+    position: absolute;
+    top: 60px;
+    right: 200px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    color: white;
+    animation: animate 0.5s linear;
+    z-index: 11;
+  }
+
   &__top {
     width: 75%;
     margin: 0 auto;

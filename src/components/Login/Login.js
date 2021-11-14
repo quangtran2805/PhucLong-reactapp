@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.scss";
 
-function Login(props) {
+function Login() {
   return (
     <div className="login">
       <div className="login__container">
@@ -28,7 +28,9 @@ function Login(props) {
           <p className="login__forget">
             Quên mật khẩu? bấm <a href="/">vào đây</a>
           </p>
-          <button type="submit" className="login__btn">ĐĂNG NHẬP</button>
+          <button type="submit" className="login__btn">
+            ĐĂNG NHẬP
+          </button>
         </form>
       </div>
     </div>
